@@ -24,16 +24,16 @@ export default {
   methods: {
     checkRoute() {
       if (
-        this.$route.name === "home" || 
+        this.$route.name === "register" || 
         this.$route.name === "login"
       ) {
         this.Navbar = true ;
         return;
-        this.Navbar - false;
+        this.Navbar = false;
       }
     }
   },
-  watch : {
+  watch: {
     $route () {
       this.checkRoute();
     },

@@ -6,14 +6,46 @@
   <img src=../assets/img/background.jpg class="card-img" alt="Stony Beach"/>
   <div class="card-img-overlay" style="background-color: rgba(0, 0, 0, 0.4)">
   <div class="container" style="max-width: 500px;">
-    <b-card class="login" style="background-color: rgba(255, 255, 255, 0.5)">
-    <b-form-group
+    <b-card class="register" style="background-color: rgba(255, 255, 255, 0.5)">
+    <b-row>
+      <b-form-group
       label-cols-lg="3"
-      label="Login"
+      label="Register"
       label-size="lg"
       label-class="font-weight-bold pt-0"
       class="mb-0"
     >
+      <b-col>
+        <b-form-group
+        label="First Name"
+        label-for="fName"
+        label-cols-sm="3"
+        label-align-sm="right"
+      >
+        <b-form-input id="fName"></b-form-input>
+      </b-form-group>
+      </b-col>
+
+      <b-col>
+        <b-form-group
+        label="Last Name:"
+        label-for="lName"
+        label-cols-sm="3"
+        label-align-sm="right"
+      >
+        <b-form-input id="lName"></b-form-input>
+      </b-form-group>
+      </b-col>
+
+      <b-form-group
+        label="Age:"
+        label-for="age"
+        label-cols-sm="3"
+        label-align-sm="right"
+      >
+        <b-form-input id="age"></b-form-input>
+      </b-form-group>
+
       <b-form-group
         label="Username:"
         label-for="username"
@@ -23,7 +55,7 @@
         <b-form-input id="username"></b-form-input>
       </b-form-group>
 
-      <b-form-group
+    <b-form-group
         label="Password:"
         label-for="password"
         label-cols-sm="3"
@@ -31,11 +63,13 @@
       >
         <b-form-input type="password" id="password"></b-form-input>
       </b-form-group>
+    
     <b-row>
-    <b-button class="btn mt-3" style="max-width: 435px;" variant="dark"> Login </b-button>
-    <b-link class="link" href="register">Don't have an account? Sign up </b-link>
+    <b-button class="btn mt-3" style="max-width: 435px;" variant="dark"> Register </b-button>
+    <b-link class="link" href="/">Already have an account? Login </b-link>
     </b-row>
     </b-form-group>
+    </b-row>
   </b-card>
   </div>
   </div>
@@ -51,8 +85,12 @@
 </script>
 
 <style lang="scss" scoped>
+.link {
+  color: #000;
+  margin-left: 105px;
+}
 
-.login {
+.register {
   justify-content: center;
   align-self: center;
   margin-top: 200px;
@@ -60,11 +98,6 @@
 
 .btn {
   margin-left: 17px;
-}
-
-.link {
-  color: #000;
-  margin-left: 105px;
 }
 
 </style>
