@@ -3,7 +3,7 @@
 <b-overlay rounded="sm">
   <div class="profile">
   <div class="card bg-dark text-white" style="max-width: 1920px;">
-  <img src=../assets/img/background.jpg class="card-img" alt="Stony Beach"/>
+  <img src=../assets/img/background.jpg class="card-img" style="max-height: 929px;" alt="Stony Beach"/>
   <div class="card-img-overlay" style="background-color: rgba(0, 0, 0, 0.4)">
   <div class="container" style="max-width: 500px;">
     <b-card class="login" style="background-color: rgba(255, 255, 255, 0.5)">
@@ -55,7 +55,7 @@
 .login {
   justify-content: center;
   align-self: center;
-  margin-top: 200px;
+  margin-top: 250px;
 }
 
 .btn {
