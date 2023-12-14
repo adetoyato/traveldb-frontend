@@ -25,9 +25,8 @@
       <img :src="require('../assets/img/icon2.png')" class="mx-3 d-flex justify-content-center" style="max-width: 500px; max-height: 230px;">
     </div>
     <div>
-        <b-button pill variant="dark" style="min-width: 250px;" class=" mx-1 my-2" href="home"> Home </b-button>
+        <b-button pill variant="dark" style="min-width: 250px;" class=" mx-1 my-2" href="/plane"> Add Destination </b-button>
     </div>
-        <b-button pill variant="dark" style="min-width: 250px;" class="mx-1" href="profile"> Profile </b-button>
       </div>
       </div>
       </template> 

@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import Profile from '../views/Profile.vue'
+import AdminUsers from '../views/AdminUsers.vue'
+import AddPlane from '../views/AddPlane.vue'
 
 Vue.use(VueRouter);
 
@@ -22,6 +25,21 @@ const routes = [
     name: 'register',
     component: Register
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: AdminUsers
+  },
+  {
+    path: '/plane',
+    name: 'plane',
+    component: AddPlane
+  }
 ]
 
 const router = new VueRouter({

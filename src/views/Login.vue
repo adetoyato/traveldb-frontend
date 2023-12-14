@@ -3,8 +3,8 @@
 <b-overlay rounded="sm">
   <div class="profile">
   <div class="card bg-dark text-white" style="max-width: 1920px;">
-  <img src=../assets/img/background.jpg class="card-img" style="max-height: 929px;" alt="Stony Beach"/>
-  <div class="card-img-overlay" style="background-color: rgba(0, 0, 0, 0.4)">
+  <!-- <img src=../assets/img/border.jpg class="card-img" style="max-height: 929px;" alt="Stony Beach"/> -->
+  <div class="card-img-overlay" style="background-color: rgba(0, 0, 0, 0.0)">
   <div class="container" style="max-width: 500px;">
     <b-card class="login" style="background-color: rgba(255, 255, 255, 0.5)">
     <b-form-group
@@ -38,6 +38,11 @@
     </b-form-group>
   </b-card>
   </div>
+  <div class="mt-6 bottom-img">
+  <div class="d-flex justify-content-center mt-5">
+  <img src=../assets/img/border1.jpg class="card-img" style="max-height: 929px; min-width: 1920px;"/>
+  </div>
+  </div>
   </div>
 <Footer />
   </div>
@@ -65,6 +70,10 @@
 .link {
   color: #000;
   margin-left: 105px;
+}
+
+.bottom-img {
+  margin-top: 122px;
 }
 
 </style>
