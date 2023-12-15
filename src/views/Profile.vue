@@ -81,12 +81,12 @@ export default {
           key: "ticket_number",
           label: "Ticket Number",
         },
-      ],
-        };
+        ],
+      };
     }
 }
 </script>
  
-<style>
+<style lang="scss" scoped>
 
 </style>

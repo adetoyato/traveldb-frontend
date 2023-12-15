@@ -19,12 +19,12 @@
 
     <div>
       <div class="mt-2 booking d-flex justify-content-center">
-      <b-container sm="auto" id="container" class="rounded py-2 pt-3" style="background-color: rgba(0, 0, 0, 0.6); max-width: 800px; max-height: 120px;">
-        <b-form-row>
+      <b-container sm="auto" id="container" class="rounded py-2 pt-3 d-flex align-content-center" style="background-color: rgba(0, 0, 0, 0.6); max-width: 800px; max-height: 120px;">
+        <!-- <b-form-row> -->
           <div>
             <b-row cols="2">
             <b-col>
-              <b-button id="chooseBtn" class="ml-4" style="min-width: 380px;" v-b-modal.destination-modal variant="light"> Choose Destination </b-button>
+              <b-button id="chooseBtn" class="ml-2" style="min-width: 380px; margin-right: 120px;" v-b-modal.destination-modal variant="light"> Choose Destination </b-button>
             </b-col>
             <div>
               <b-modal centered id="destination-modal" ref="modal" hide-footer title="Choose Destination">
@@ -32,7 +32,7 @@
                 <b-table hover class="text-center" :items="cityState" :fields="destinationFields" :per-page="perPage" :current-page="currentPage">
                   <template v-slot:cell(Confirm)="{ item }">
                     <div>
-                      <b-button v-b-modal @click="selectDestination(item)">
+                      <b-button variant="warning" v-b-modal @click="selectDestination(item)">
                         <b-icon icon="check"></b-icon>
                       </b-button>
                     </div>
@@ -49,7 +49,13 @@
                 <b-button class="mt-2 mr-2 position-relative" variant="danger" type="submit" @click="hideModal"> Cancel </b-button>
               </div>
             </b-modal>
-            <b-col class="ml-5">
+            <b-col>
+              <!-- <b-input-group class="pl-2">
+                    <b-form-input id="date" v-model="value" type="text" placeholder="Choose Departure Date" autocomplete="off"></b-form-input>
+                    <b-input-group-append>
+                      <b-form-datepicker v-model="value" calendar-width="100%" today-button reset-button close-button :min="new Date()" :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric', }" button-only right locale="en-US" aria-controls="date" @context="onContext"></b-form-datepicker>
+                    </b-input-group-append>
+              </b-input-group> -->
             <b-form-datepicker name="date" placeholder="Choose Departure Date" :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric',}"
             :min="new Date()" today-button reset-button menu-class="w-100" calendar-width="100%" close-button v-model="destination.date_confirmed"></b-form-datepicker>
             </b-col>
@@ -59,7 +65,7 @@
               <div>
               <b-row cols="3">
                 <b-col class="py-3">
-                <div class="ml-4 col">
+                <div class="ml-2 col">
                   <div class="select text-white">
                     Country: <strong>{{ this.destination.country_name }}</strong>
                   </div>
@@ -71,12 +77,12 @@
                 </div>
                 </b-col>
             <b-col class="py-3 float-right">
-              <b-button right class="bookBtn" type="submit" style="min-width: 200px; margin-left: 65px" variant="success" @click="bookTravel">Book Travel</b-button>
+              <b-button right class="bookBtn" type="submit" style="min-width: 200px; margin-left: 37px" variant="success">Book Travel</b-button>
             </b-col>
             </b-row>
             </div>
           </div>
-        </b-form-row>
+        <!-- </b-form-row> -->
       </b-container>
       </div>
 
@@ -135,7 +141,6 @@
   </b-card>
 </b-card-group>
       </div>
-
     </div>
   </div>
 </template>
@@ -154,6 +159,9 @@ export default {
   },
     data() {
       return {
+        value: '',
+        formatted: '',
+        selected: '',
         slide: 0,
         sliding: null,
         destination: {
@@ -202,6 +210,20 @@ export default {
       },
       onSlideEnd(slide) {
         this.sliding = false
+      },
+
+      onContext(ctx) {
+        this.formatted = ctx.selectedFormatted
+        this.selected = ctx.selectedYMD
+      },
+
+      selectDestination(item) {
+        this.destination.city_id = item.city_id;
+        this.destination.country_id = item.country_id;
+        this.destination.city_name = item.city_name;
+        this.destination.country_name = item.country_name;
+        
+        this.$bvModal.hide("destination-modal");
       },
 
       async fetchCity() {

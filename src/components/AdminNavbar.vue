@@ -1,12 +1,12 @@
 <template>
 <div>
-  <b-navbar toggleable id="nav" class="px-2" style="background-color: #FFF;">
-    <b-navbar-brand>
-      <img :src="require('../assets/img/icon1.png')" class="mx-2" style="max-width: 40px; max-height: 40px;">
+  <b-navbar toggleable id="nav" class="px-2" style="background-color: rgb(33, 33, 33);">
+    <b-navbar-brand class="text-white" style="font-size: 30px">
+      <img :src="require('../assets/img/ticons4.png')" class="mx-2" style="max-width: 40px; max-height: 40px;">
       Lou Geh Travel
     </b-navbar-brand>
     
-    <b-navbar-toggle target="sidebar-footer"></b-navbar-toggle>
+    <b-navbar-toggle style="background-color: rgb(255, 255, 255);" target="sidebar-footer"></b-navbar-toggle>
 
       
     <b-sidebar id="sidebar-footer" aria-label="Sidebar with custom footer" no-header shadow :backdrop-variant="variant" backdrop>
@@ -18,7 +18,7 @@
       </template>
       <template #default>
       <div class="bg-light text-dark px-3 py-3" style="font-size: 25px;">
-        <img :src="require('../assets/img/icon1.png')" class="mx-3" style="max-width: 40px; max-height: 40px;"> Lou Geh Travel
+        <img :src="require('../assets/img/ticons4.png')" class="mx-3" style="max-width: 40px; max-height: 40px;"> Lou Geh Travel
         <div class="px-3 py-2">
         <p class="border-bottom border-dark">
     <div>

@@ -75,7 +75,7 @@ export default new Vuex.Store({
           sql: "SELECT * FROM view_country;",
         });
         commit("SET_COUNTRY_LIST", data);
-        console.log("test", data)
+        console.log("counntries: ", data)
       } catch ({ response }) {
         console.log("data", response);
         console.error(response.data.errorMsg);
@@ -87,6 +87,15 @@ export default new Vuex.Store({
         sql: "INSERT INTO country (country_name) VALUES ($1) RETURNING *;",
       });
       commit("ADD_COUNTRY", data);
+      console.log("res", response)
+      console.error(response.data.errorMsg);
+    },
+
+    async addCity({ commit }, data){
+      const response = await service.fetchDataFromApi(axios, {
+        sql: "UPDATE cities SET country_id = $1, city_name = $2 WHERE city_id = $3;",
+      });
+      commit ("ADD_CITY", data);
       console.log("res", response)
       console.error(response.data.errorMsg);
     },
