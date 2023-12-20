@@ -4,7 +4,6 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue'
-import AdminUsers from '../views/AdminUsers.vue'
 import AddPlane from '../views/AddPlane.vue'
 
 Vue.use(VueRouter);
@@ -31,11 +30,6 @@ const routes = [
     component: Profile
   },
   {
-    path: '/users',
-    name: 'users',
-    component: AdminUsers
-  },
-  {
     path: '/plane',
     name: 'plane',
     component: AddPlane
@@ -47,5 +41,16 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ["/", "/login", "/register", "/plane", "/home"];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem("user");
+
+  if(authRequired && !loggedIn) {
+    return next("/home");
+  }
+  next();
+})
 
 export default router

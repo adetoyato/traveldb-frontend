@@ -27,7 +27,7 @@
               <b-button id="chooseBtn" class="ml-2" style="min-width: 380px; margin-right: 120px;" v-b-modal.destination-modal variant="light"> Choose Destination </b-button>
             </b-col>
             <div>
-              <b-modal centered id="destination-modal" ref="modal" hide-footer title="Choose Destination">
+              <b-modal centered id="destination-modal" ref="modal" hide-footer title="Choose Destination" size="md">
               <b-row class="d-flex justify-content-center">
                 <b-table hover class="text-center" :items="cityState" :fields="destinationFields" :per-page="perPage" :current-page="currentPage">
                   <template v-slot:cell(Confirm)="{ item }">
@@ -77,7 +77,7 @@
                 </div>
                 </b-col>
             <b-col class="py-3 float-right">
-              <b-button right class="bookBtn" type="submit" style="min-width: 200px; margin-left: 37px" variant="success">Book Travel</b-button>
+              <b-button right class="bookBtn" type="submit" style="min-width: 200px; margin-left: 37px" variant="success" @click="saveTicket">Book Travel</b-button>
             </b-col>
             </b-row>
             </div>
@@ -167,6 +167,7 @@ export default {
         destination: {
           city_id: "",
           country_id: "",
+          user_id: "",
           country_name: "",
           city_name: "",
           date_confirmed: "",
@@ -224,6 +225,22 @@ export default {
         this.destination.country_name = item.country_name;
         
         this.$bvModal.hide("destination-modal");
+      },
+
+      async saveTicket(e) {
+        e.preventDefault()
+        await service.fetchDataFromAPI(axios, {
+          sql: "INSERT INTO ticket (city_id, user_id, date) VALUES ($1, $2, $3, $4) RETURNING *;",
+          options: [this.destination.city_id, this.destination.country_id, this.destination.user_id, this.destination.date_confirmed],
+        })
+        .then(
+          (res) => {
+            this.$store.dispatch("fetchCity");
+          },
+          (err) => {
+            console.log(err);
+          }
+        )
       },
 
       async fetchCity() {
